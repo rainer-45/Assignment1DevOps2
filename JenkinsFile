@@ -13,11 +13,8 @@
 //
 
 pipeline {
-    agent {
-        docker {
-            image 'node:20-alpine'
-        }
-    }
+    agent any
+
     environment {
     FIREBASE_DEPLOY_TOKEN = credentials('FIREBASE_TOKEN')
     }
@@ -44,7 +41,7 @@ pipeline {
         stage('Production') {
 	     steps {
 		//sh 'firebase use production'
-                sh 'firebase deploy -P testingtictactoe-b3172 --token "$FIREBASE_DEPLOY_TOKEN"'
+                sh 'firebase deploy --only hosting:testingtictactoe-b3172 -P testingtictactoe-b3172 --token "$FIREBASE_DEPLOY_TOKEN"'
             }
         }
     }
