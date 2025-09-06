@@ -14,7 +14,9 @@
 
 pipeline {
     agent any
-
+    environment {
+    FIREBASE_DEPLOY_TOKEN = credentials('FIREBASE-TOKEN')
+    }
     stages {
         
 	stage('Build') {
@@ -38,7 +40,7 @@ pipeline {
         stage('Production') {
 	     steps {
                 sh 'firebase use production'
-                sh 'firebase deploy --only hosting'
+                sh 'firebase deploy --token "$FIREBASE_DEPLOY_TOKEN"'
             }
         }
     }
