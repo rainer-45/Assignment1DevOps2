@@ -39,8 +39,7 @@ pipeline {
 
         stage('Production') {
 	     steps {
-                sh 'firebase use production'
-                sh 'firebase deploy --token "$FIREBASE_DEPLOY_TOKEN"'
+                sh 'firebase deploy -P testingtictactoe-b3172 --token "$FIREBASE_DEPLOY_TOKEN"'
             }
         }
     }
