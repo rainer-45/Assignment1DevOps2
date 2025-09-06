@@ -149,13 +149,24 @@ function AddGroupMember(lastName, firstName) {
 /*
 * Function to remove (delete) a selected group member from the selection list.
 * 
-*/
+
 function RemoveGroupMember() {
 
 	throw "ERROR! You must work in this function before to send to Staging Environment!";
 
-}
+}*/
+function RemoveGroupMember() {
+    // Check if there’s a selected item
+    let selectedIndex = membersLst.selectedIndex;
 
+    if (selectedIndex === -1) {
+        alert("Please select a member to remove.");
+        return;
+    }
+
+    // Remove the selected item
+    membersLst.remove(selectedIndex);
+}
 /*
 * Function to sort the list of group members in ascending order by last name.
 * 
