@@ -40,9 +40,8 @@ pipeline {
 
         stage('Production') {
 	     steps {
-                sh 'firebase use testingtictactoe-b3172 --token $FIREBASE_TOKEN'
-                sh 'firebase deploy --only hosting --token $FIREBASE_TOKEN'
-   //             sh 'firebase deploy --only hosting:testingtictactoe-b3172 -P testingtictactoe-b3172 --token "$FIREBASE_DEPLOY_TOKEN"'
+                sh 'firebase use testingtictactoe-b3172 --token $FIREBASE_DEPLOY_TOKEN'
+                sh 'firebase deploy --only hosting --token $FIREBASE_DEPLOY_TOKEN'
             }
         }
     }
